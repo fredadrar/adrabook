@@ -1,0 +1,98 @@
+a:hover {
+    text-decoration: none;
+}
+
+.link {
+    border-bottom: 1px solid #dddddd;
+}
+.link:hover {
+    background-color: #eeeeff;
+}
+
+.listheader {
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+.list-group {
+    height: 40vh;
+    overflow-y: scroll;
+    border: 1px solid #bbbbbb;
+    border-radius: 3px;
+}
+
+.chosen, .chosen:hover {
+    background-color: #ccddff;
+}
+
+.bouton-adminboard {
+    background-color: #eeeeff;
+    color: #000000;
+    margin-left: 2rem;
+    padding: 0 1rem 0.2rem 1rem;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.bouton-adminboard:hover {
+    background-color: #ccddff;
+    color: #000000;
+}
+
+.tableadminboard thead,
+.tableadminboard tbody,
+.tableadminboard tr,
+.tableadminboard td,
+.tableadminboard th {
+    display: block;
+    font-size: 0.8rem;
+}
+
+.columnDocuments, .columnTypedocs, .columnDeadlines {
+    padding-left: 0.5rem !important;
+}
+th {
+    border-right: 2px solid #ffffff;
+}
+.tableadminboard tbody {
+    max-height: 25vh;
+    overflow-y: scroll;
+}
+
+.docTableHeaderCell:nth-child(1) {
+    width: 40%;
+}
+.docTableHeaderCell:nth-child(n+2) {
+    width: 20%;
+}
+/*.bottom-table-header {*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*padding: 0 1rem 0 1rem !important;*/
+    /*height: 2.5rem;*/
+    /*border-right: 2px solid white;*/
+    /*width: 100%;*/
+/*}*/
+
+/*.bottom-table-header th{*/
+    /*flex: 1 1 0;*/
+/*}*/
+
+/*th>* {*/
+    /*margin-right: 2rem;*/
+/*}*/
+/*.docTableCell {*/
+    /*width: 20%;*/
+/*}*/
+
+/*.bouton-upload {*/
+    /*width: 7rem;*/
+/*}*/
+
+/*.table-bordered{*/
+    /*border: 2px solid black;*/
+/*}*/
+
+/*.btn-outline-dark {*/
+    /*background-color: white;*/
+/*}*/

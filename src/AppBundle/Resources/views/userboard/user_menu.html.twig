@@ -1,0 +1,13 @@
+{% block menu %}
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03" style="">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Livres</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Mes emprunts</a>
+            </li>
+        </ul>
+    </div>
+    <div><a href="{{ path('fos_user_security_logout') }}" class="btn btn-sm btn-info">Se déconnecter</a></div>
+{% endblock %}
