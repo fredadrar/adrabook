@@ -80,7 +80,7 @@ class Loan
     /**
      * Set book
      *
-     * @param integer $book
+     * @param $book
      *
      * @return Loan
      */
@@ -100,14 +100,14 @@ class Loan
     {
         return $this->book;
     }
-
-    /**
-     * Set user
-     *
-     * @param integer $user
-     *
-     * @return Loan
-     */
+	
+	/**
+	 * Set user
+	 *
+	 * @param $user
+	 *
+	 * @return Loan
+	 */
     public function setUser($user)
     {
         $this->user = $user;

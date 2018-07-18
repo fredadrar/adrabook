@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Livres empruntés actuellement</h1>
+
+    <table class="table table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Titre</th>
+                <th>Emprunté par</th>
+                <th>Date de retour prévue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loan in loans %}
+            <tr>
+                <td>{{ loan.book.title }}</td>
+                <td>{{ loan.user.fullName }}</td>
+                <td>{{ loan.loanDate|date_modify('+15 day')|date('d-m-Y') }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="{{ path('book_show', { 'id': loan.book.id }) }}">détail du livre</a>
+                        </li>
+                        {% if loan.user == app.user %}
+                        <li>
+                            <a href="{{ path('book_return', { 'id': loan.book.id }) }}">rendre</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

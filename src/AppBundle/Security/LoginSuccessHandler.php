@@ -26,10 +26,10 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 		$response = null;
 		
 		if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
-			$response = new RedirectResponse($this->router->generate('index-admin'));
+			$response = new RedirectResponse($this->router->generate('book_index'));
 		}
 		else if ($this->authorizationChecker->isGranted('ROLE_USER')) {
-			$response = new RedirectResponse($this->router->generate('accueil-stagiaire'));
+			$response = new RedirectResponse($this->router->generate('book_index'));
 		}
 		
 		return $response;

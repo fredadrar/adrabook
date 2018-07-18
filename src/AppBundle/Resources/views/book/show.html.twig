@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1>Livre : {{ book.title }}</h1>
+
+    <table class="table table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Résumé</th>
+                <th>Prété à</th>
+                <th>Date de retour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.abstract }}</td>
+                {% if book.loans is empty %}
+                <td>Livre disponible</td>
+                <td>-</td>
+                {% else %}
+                <td>{% if is_granted("ROLE_ADMIN") %}{{ book.loans[0].user.fullName }}{% else %}Non disponible{% endif %}</td>
+                <td>{{ book.loans[0].loanDate|date_modify('+15 day')|date('d-m-Y') }}</td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+
+        {% if is_granted("ROLE_ADMIN") %}
+        <li>
+            <a href="{{ path('book_form', { 'id': book.id }) }}">modifier</a>
+        </li>
+        <li>
+            <a href="{{ path('book_delete', { 'id': book.id }) }}">supprimer</a>
+        </li>
+        {% endif %}
+
+        <li>
+            <a href="{{ path('book_index') }}">retour</a>
+        </li>
+    </ul>
+
+{% endblock %}

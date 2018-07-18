@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Utilisateur : {{ user.fullName }}</h1>
+
+    {{ form_start(form, {'attr' : {'novalidate':'novalidate'}}) }}
+
+    <div class="formcell col-md-6">
+        {{ form_label(form.username, 'Nom du compte') }}
+        {{ form_widget(form.username) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.email, 'Email') }}
+        {{ form_widget(form.email) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.plainPassword) }}
+        {{ form_widget(form.plainPassword) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.fname) }}
+        {{ form_widget(form.fname) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.lname) }}
+        {{ form_widget(form.lname) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.active) }}
+        {{ form_widget(form.active) }}
+    </div>
+    <input type="submit" value="Valider" />
+
+    {{ form_end(form) }}
+
+    <ul class="list-unstyled">
+        {% if user.id is not null %}
+            <li>
+                <a href="{{ path('user_delete', { 'id': user.id }) }}">supprimer</a>
+            </li>
+        {% endif %}
+        <li>
+            <a href="{{ path('user_index') }}">retour</a>
+        </li>
+
+    </ul>
+
+{% endblock %}

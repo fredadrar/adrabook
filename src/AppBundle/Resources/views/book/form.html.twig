@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Livre : {{ book.title }}</h1>
+
+    {{ form_start(form) }}
+
+    <div class="formcell col-md-6">
+        {{ form_label(form.title, 'Titre') }}
+        {{ form_widget(form.title) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.author, 'Auteur') }}
+        {{ form_widget(form.author) }}
+    </div>
+    <div class="formcell col-md-6">
+        {{ form_label(form.abstract, 'Résumé') }}
+        {{ form_widget(form.abstract) }}
+    </div>
+    <input type="submit" value="Valider" />
+
+    {{ form_end(form) }}
+
+    <ul class="list-unstyled">
+        {% if book.id is not null %}
+            <li>
+                <a href="{{ path('book_delete', { 'id': book.id }) }}">supprimer</a>
+            </li>
+        {% endif %}
+        <li>
+            <a href="{{ path('book_index') }}">retour</a>
+        </li>
+
+    </ul>
+
+{% endblock %}

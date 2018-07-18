@@ -117,7 +117,12 @@ class User extends BaseUser
     {
         return $this->lname;
     }
-
+	
+	public function getFullName()
+	{
+		return $this->fname .' '. $this->lname;
+	}
+	
     /**
      * Set active
      *

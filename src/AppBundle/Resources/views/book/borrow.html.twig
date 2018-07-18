@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h4>Emprunter {{ book.title }}<br>Confirmer ?</h4>
+
+    {{ form_start(form) }}
+
+    <input class="btn btn-warning" type="submit" value="Emprunter">
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('book_index') }}">retour</a>
+
+{% endblock %}

@@ -11,13 +11,56 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">AdraBook</a>
+            <a class="navbar-brand" href="{{ path('book_index') }}">AdraBook</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            {% block menu %}{% endblock %}
+
+            {% if is_granted("ROLE_ADMIN") %}
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item {% if 'book' in app.request.requestUri %}active{% endif %}">
+                        <a class="nav-link" href="{{ path('book_index') }}">Livres</a>
+                    </li>
+                    <li class="nav-item {% if 'user' in app.request.requestUri %}active{% endif %}">
+                        <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item {% if 'loan' in app.request.requestUri and 'late' not in app.request.requestUri %}active{% endif %}">
+                        <a class="nav-link" href="{{ path('loan_index') }}">Emprunts</a>
+                    </li>
+                    <li class="nav-item {% if 'late' in app.request.requestUri %}active{% endif %}">
+                        <a class="nav-link" href="{{ path('late_index') }}">Retards</a>
+                    </li>
+                </ul>
+            </div>
+            <div><a href="{{ path('fos_user_security_logout') }}" class="btn btn-sm btn-info">Se déconnecter</a></div>
+
+            {% elseif is_granted("ROLE_USER") %}
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item {% if 'book' in app.request.requestUri %}active{% endif %}">
+                        <a class="nav-link" href="{{ path('book_index') }}">Livres</a>
+                    </li>
+                    <li class="nav-item {% if 'loan' in app.request.requestUri %}active{% endif %}">
+                        <a class="nav-link" href="{{ path('my_loans') }}">Mes emprunts</a>
+                    </li>
+                </ul>
+            </div>
+            <div><a href="{{ path('fos_user_security_logout') }}" class="btn btn-sm btn-info">Se déconnecter</a></div>
+            {% endif %}
         </nav>
         <div class="container">
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             {% block body %}{% endblock %}
             {% block javascripts %}
             <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>

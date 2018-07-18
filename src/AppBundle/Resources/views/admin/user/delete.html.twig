@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h4>Supprimer {{ user.fullName }}<br>Confirmer ?</h4>
+
+    {{ form_start(form) }}
+
+        <input type="submit" value="Suppression">
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('user_index') }}">retour</a>
+
+{% endblock %}
